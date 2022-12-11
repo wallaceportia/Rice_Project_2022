@@ -1,0 +1,18 @@
+Steps for Map Rice project:
+Step 1:
+Create layers to Map
+	Consumption
+	Production
+	Population
+	GDP
+Step 2:
+Add layers to Map
+
+Step 3:
+Add description to layers
+
+Step 4:
+Add data to each layer and add to map
+	
+Step 5:
+Add a popup to that data
