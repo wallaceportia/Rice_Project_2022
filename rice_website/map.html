@@ -7,22 +7,48 @@
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
 <link rel="stylesheet" type="text/css" href="static/css/style.css">
+<link rel="stylesheet" href="nouislider.css"/>
+
+
 </head>
 <body>
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
 <div id="header" class="header"></div>
+
+
+<div id="slider_section">
+<div id="slider_value"></div>
+<script>
+function updateMap(year){
+	map.remove();
+	var dataSection = document.getElementById("data_section");
+	var sliderValue = document.getElementById("slider_value");
+	dataSection.innerHTML="";
+	sliderValue.innerHTML=year;
+	drawMap("data_section",regionData,year);
+}
+</script>
+<input type="range" min="1961" max="2017" value="2017" id="slider" 
+onchange="updateMap(this.value)">
+</div>
 <div id="data_section"></div>
+<script src="nouislider.js"></script>
 <script> var page="map";</script> 
 <script type="text/javascript" src="static/js/header.js"></script>
 <script type="text/javascript" src="static/js/config.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script> 
  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-<!-- Leaflet JavaScript -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin=""></script>
 
+<script type="text/javascript" src="static/js/region_data.js"></script> 
 <script type="text/javascript" src="static/js/map.js"></script>
-<script> drawMap("data_section",null,null);</script>
+<script> 
+
+
+drawMap("data_section",regionData,1973);</script>
 </body>
 </html>

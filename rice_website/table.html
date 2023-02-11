@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Rice Data Dashboard</title>
-<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<meta charset=utf-8">
+	<title>Rice Table</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
+
 <body>
-<div id="header" class="header"></div>
-<div id="data_section"></div>
-<script> var page="table";</script> 
-<script type="text/javascript" src="static/js/header.js"></script>
+	<div id="header" class="header"></div>
+	<h1><FONT COLOR= purple>Rice Production & Consumption</Font></h1>
+
+
+	<div id="data_section"></div>
+	 <table> 
+		<thead>
+			<tr>
+				<td></td>
+			</tr>
+		</thead>
+		
+	   </table>
+
+	<script> var page="table";</script> 
+	
+	<canvas id="tableCanvas" width="250" height="300"></canvas>
+	
+	<script type="text/javascript" src="static/js/region_data.js"></script> 
+	<script type="text/javascript" src="static/js/table.js"></script>
+	<script> var page="charts";</script> 
+	<script type="text/javascript" src="static/js/header.js"></script>
+	
 </body>
 </html>
