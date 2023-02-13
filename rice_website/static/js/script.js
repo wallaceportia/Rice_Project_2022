@@ -1,25 +1,6 @@
 
-
-// Fetch Block
-//async function fetchData() {
-	/* const url = fetch('C:\Users\Getli\Documents\rice_consumption_project_2022\rice_consumption_project\Rice-Project-2022\region_data.json')
-	const response = await fetch(url);
-	// wait until the request has been completed
-	const datapoints = await response.json();
-	console.log(datapoints);
-	return datapoints;
 	
-};
-
-fetchData().then(datapoints)=> {
-	const consumption = datapoints.population
-} */
-
-
-
-
 function getYears(){
-	
 	var years =[];
 	for (let i=1961; i<=2017;i++){
 		years.push(i);
@@ -34,13 +15,28 @@ function getColumn(region,name){
 	}
 	return column;
 }
+function footer(tooltipItems) {
+	console.log("footer");
+	console.log(tooltipItems);
+	let continent = tooltipItems[0]["dataset"]["region"];
+  let item = [];
+
+  tooltipItems.forEach(function(tooltipItem) {
+    item += tooltipItem.parsed.y;
+  });
+   
+  return 'Region: '+ continent;
+};
 function prepareData(region){
+
+
 
 const data = {
       labels: getYears(),
       datasets: [
 	  {
         label: 'Consumption',
+		region: region,
         data: getColumn(region,"Tons Consumption"),
 		
          backgroundColor: [
@@ -56,6 +52,7 @@ const data = {
       },
 	  {
         label: 'Production',
+		region: region,
        
 		data: getColumn(region, "Production"),
          backgroundColor: [
@@ -79,26 +76,39 @@ function drawChart(region){
 	if (oldChart != null){
 		oldChart.destroy();
 	}
-	
-var canvasElement = document.getElementById("chartCanvas");
-var data = prepareData(region);
+
+	var canvasElement = document.getElementById("chartCanvas");
+	var data = prepareData(region);
     // config 
-    const config = {
+	const config = {
       type: 'line',
 	  tension: 0.4,
       data,
       options: {
+		  interaction: {
+      intersect: false,
+      mode: 'index',
+    },
+		plugins: {
+			tooltip: {
+        callbacks: {
+          footer: footer,
         scales: {
           y: {
             beginAtZero: true
+	
           }
         }
       }
-    };
-oldChart = new Chart(canvasElement,config);
-}
-drawChart("Asia");
+    }
 
+}
+
+	  }
+	};
+	oldChart = new Chart(canvasElement,config);
+};
+drawChart("Asia");
     // render init block
     //const myChart = new Chart(
       //document.getElementById('myChart'),
